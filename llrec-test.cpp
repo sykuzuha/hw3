@@ -84,8 +84,14 @@ int main(int argc, char* argv[])
     Node* head = readList(argv[1]);
     cout << "Original list: ";
     print(head);
-
+    Node* smaller;
+    Node* larger;
     // Test out your linked list code
+    llpivot (head, smaller, larger, 10);
+    cout << "Smaller list: ";
+    print(smaller);
+    cout << "Larger list: ";
+    print(larger);
 
 
 
