@@ -37,7 +37,7 @@ class Or2Gate : public Gate
 class NOT : public Gate
 {
   public:
-      NOT(Wire*);
+      NOT(Wire*, Wire*);
       Event* update(uint64_t);
 };
 
