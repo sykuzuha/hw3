@@ -1,5 +1,4 @@
-#include <iostream>
-#include <fstream>
+
 #include <functional>
 #include "llrec.h"
 using namespace std;
@@ -87,7 +86,9 @@ int main(int argc, char* argv[])
     Node* smaller;
     Node* larger;
     // Test out your linked list code
-    llpivot (head, smaller, larger, 10);
+    llpivot (head, smaller, larger, 5);
+    cout << "Head list: ";
+    print(head);
     cout << "Smaller list: ";
     print(smaller);
     cout << "Larger list: ";

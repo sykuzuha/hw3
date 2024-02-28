@@ -130,14 +130,14 @@ void Heap<T,PComparator>::push(const T& item)
 template <typename T, typename PComparator>
 void Heap<T,PComparator>::heapify(int idx)
 {
-  if (idx >= size() / 2) 
+  /*if (idx >= size() / m_) 
   {
     return;
   }
-  int smallerChild = 2 * idx + 1;
-  if (2 * idx + 1 < size()) 
+  int smallerChild = m_ * idx + 1;
+  if (m_ * idx + 1 < size()) 
   {
-    int rChild = 2 * idx + 2;
+    int rChild = m_ * idx + 2;
     if (c_(items_[rChild], items_[smallerChild]))
     {
       smallerChild = rChild;
@@ -149,6 +149,17 @@ void Heap<T,PComparator>::heapify(int idx)
   {
     std::swap(items_[idx], items_[smallerChild]);
     heapify(smallerChild);
+  }*/
+  int smallest = idx; // Initialize smallest as root
+  for (int i = 1; i <= m_; ++i) {
+    int child = m_ * idx + i;
+    if (child < items_.size() && c_(items_[child], items_[smallest])) {
+      smallest = child;
+    }
+  }
+  if (smallest != idx) {
+    std::swap(items_[idx], items_[smallest]);
+    heapify(smallest); // Recur for the affected sub-tree
   }
 }
 
@@ -156,12 +167,12 @@ template <typename T, typename PComparator>
 void Heap<T,PComparator>::trickleUp(int loc)
 {
   // could be implemented recursively
-  int parent = (loc - 1)/2;
+  int parent = (loc - 1)/m_;
   while(parent >= 0 && c_(items_[loc], items_[parent]) )
   {  
     std::swap(items_[parent], items_[loc]);
     loc = parent;
-    parent = (loc - 1)/2;
+    parent = (loc - 1)/m_;
   }
 }
 
